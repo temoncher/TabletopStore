@@ -74,7 +74,7 @@ namespace TabletopStore.Mocks
                             MinPlayers = 2,
                             Time = 20,
                             Price = 1249.99,
-                            ImageUrl = "https://yar.mosigra.ru/mosigra.product.main/543/598/DSC_0702_800x500.jpg",
+                            ImageUrl = "https://yar.mosigra.ru/mosigra.product.main/555/302/DSC_3489_800x500.jpg",
                             ImageThumbnailUrl = "https://cdn.mosigra.ru/mosigra.product.box/555/299/1_200x170.jpg",
                             AmountInStock = 33,
                             IsHit = false,
