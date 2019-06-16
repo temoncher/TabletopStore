@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.CurrentCategory</title>
+</head>
+<body>
+    <div class="container">
+        <h2>@Model.CurrentCategory</h2>
+        <div class="row">
+            @foreach (var game in Model.Games)
+            {
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="@game.ImageThumbnailUrl" alt="Alternate Text" style="padding: 4%" />
+                            @if (game.IsHit)
+                            {
+                                <a href="#" class="halfway-fab btn-floating btn-large pink pulse">
+
+                                    <i class="meterial-icons">hit</i>
+                                </a>
+                            }
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">@game.Name</span>
+                            <p class="truncate">@game.ShortDescription</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">Подробнее</a>
+                            <a href="#" class="btn blue lighten-1 right">@game.Price.ToString("c")</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
