@@ -15,5 +15,6 @@ namespace TabletopStore.Models
 
         public DbSet<Game> Games { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

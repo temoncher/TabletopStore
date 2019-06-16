@@ -1,8 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@await Html.PartialAsync("Carousel")
+
+    <h2>Hits of the week</h2>
+    <h4>Best games are eager for you to play them!</h4>
+
+    <div>
+        @foreach(var game in Model.HitGames)
+        {
+            @await Html.PartialAsync("GameSummary", game)
+        }
+    </div>

@@ -46,8 +46,14 @@ namespace TabletopStore
             
             services.AddTransient<IGameRepository, GameRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShoppingCart.GetCart(sp));
                                  
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMemoryCache();
+            services.AddSession();
 
         }
 
@@ -67,6 +73,7 @@ namespace TabletopStore
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             DbInitializer.Seed(context);
 

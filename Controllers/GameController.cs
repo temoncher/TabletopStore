@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Services;
-using TabletopStore.ViewModels;
+using TabletopStore.Data.ViewModels;
 
 namespace TabletopStore.Controllers
 {

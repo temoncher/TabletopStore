@@ -4,15 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TabletopStore.Data.ViewModels;
 using TabletopStore.Models;
+using TabletopStore.Services;
 
 namespace TabletopStore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IGameRepository _gameRepository;
+        public HomeController(IGameRepository gameRepository)
         {
-            return View();
+            _gameRepository = gameRepository;
+        }
+        public ViewResult Index()
+        {
+            var homeVM = new HomeViewModel
+            {
+                HitGames = _gameRepository.Hits
+            };
+            return View(homeVM);
         }
 
         public IActionResult Privacy()

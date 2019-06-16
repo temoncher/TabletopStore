@@ -1,0 +1,53 @@
+﻿@model ShoppingCartViewModel
+
+<div class="row">
+    <h2>Your shopping cart</h2>
+    <table class="stripped highlight responsive-table">
+        <thead>
+            <tr>
+                <th>Selected amount</th>
+                <th>Game</th>
+                <th class="">Price</th>
+                <th class="">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.Items)
+            {
+                <tr>
+                    <td class="">@line.Amount</td>
+                    <td class="">@line.Game.Name</td>
+                    <td class="">@line.Game.Price.ToString("c")</td>
+                    <td class="">
+                        @((line.Amount * line.Game.Price).ToString("c"))
+                    </td>
+                    <td class=""><a class="" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-gameId="@line.Game.GameId"></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="">Total:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="">
+        <div class="">
+            <a class="" asp-controller="Order" asp-action="Checkout">Check out</a>
+            <a class="">
+                <a class="" data-toggle="dropdown">
+                    Add more games<span class=""></span>
+                </a>
+                <ul class="" role="menu">
+                    <li><a asp-controller="Game" asp-action="List" asp-route-category="Alcoholic">Alcoholic</a></li>
+                    <li><a asp-controller="Game" asp-action="List" asp-route-category="Non-alcoholic">Non Alcoholic</a></li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>
