@@ -13,26 +13,44 @@
     <title>OnlineStore</title>
 </head>
 <body>
+    <!--NavMenu-->
     <nav class="nav-wrapper blue lighten-1">
         <div class="container">
-            <a href="#" class="brand-logo center">Site logo</a>
+            <a asp-controller="Home" asp-action="Index" class="brand-logo center">Site logo</a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Games</a></li>
-                <li><a href="#">Categories</a></li>
-                <li class="right"><a href="#" class="btn blue lighten-1">Login</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <!-- Dropdown Trigger -->
+                <li>
+                    <a asp-controller="Games" asp-action="List" class='dropdown-trigger' data-target='dropdown1'>Games</a>
+                    @await Component.InvokeAsync("CategoryMenu")
+                </li>
+
+                <li><a asp-controller="Contact" asp-action="Index">Contact us</a></li>
+                @await Component.InvokeAsync("ShoppingCartSummary")
+            </ul>
+            <ul class="sidenav" id="mobile-links">
+                <li class="bold"><a asp-controller="Home" asp-action="Index" class='waves-effect waves-teal'>Home</a></li>
+                <!-- Dropdown Trigger -->
+                <li class="bold" >
+                    <ul class="collapsible collapsible-accordion">
+                        <li >
+                            <a class='collapsible-header waves-effect waves-teal' href="#" tabindex="0" style="padding: 0px 32px">Games</a>
+
+                            <div class="collapsible-body" style="display: block; padding: 0px 16px">
+                                @await Component.InvokeAsync("MobileCategoryMenu")
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="bold"><a asp-controller="Contact" asp-action="Index" class='waves-effect waves-teal'>Contact us</a></li>
             </ul>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Games</a></li>
-        <li><a href="#">Categories</a></li>
-    </ul>
+
     <div class="container">
         @RenderBody()
     </div>
@@ -48,6 +66,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Scripts-->
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav()
@@ -60,6 +79,18 @@
         $('.carousel.carousel-slider').carousel({
             fullWidth: true
         });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
+    </script>
+    <script>
+        $('.dropdown-trigger').dropdown(
+            {
+                hover: true,
+                coverTrigger: false
+            });
     </script>
 </body>
 </html>

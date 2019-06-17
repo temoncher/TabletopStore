@@ -80,6 +80,10 @@ namespace TabletopStore
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "categoryFilter",
+                    template: "game/{action}/{category?}",
+                    defaults: new { Controller = "Game", Action = "List"});
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

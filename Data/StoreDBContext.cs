@@ -14,5 +14,10 @@ namespace TabletopStore.Models
 
         //db of all shopping cart items
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        //db for Orders and order details for each order
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
