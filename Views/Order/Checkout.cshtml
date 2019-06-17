@@ -1,0 +1,43 @@
+﻿@model Order
+
+<div class="row">
+    <h3 class="text-center">You are just one step away from ordering your games!</h3>
+
+    <form asp-action="Checkout" method="post" role="form">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input asp-for="LastName" id="FirstName_prefix" type="text" class="validate">
+                <label for="FirstName_prefix">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input asp-for="LastName" id="LastName_prefix" class="form-control" />
+                <label for="LastName_prefix">Last Name</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">location_on</i>
+                <input asp-for="Country" id="country" class="validate">
+                <label for="country">Country</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">mail</i>
+                <input asp-for="Email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+                <span class="helper-text" data-error="It's not email adress(" data-success="Brilliant!">This text helps you fill the form</span>
+            </div>
+        </div>
+
+
+        <div>
+            <input asp-controller="ShoppingCart" asp-action="Index" class="btn red lighten-1 margin_1" type="submit" value="Wait! I forgot something!" />
+            <input class="btn blue lighten-1 margin_1 right" type="submit" value="Complete order" />
+        </div>
+
+    </form>
+</div>

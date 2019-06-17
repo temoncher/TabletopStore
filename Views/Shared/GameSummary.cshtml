@@ -16,9 +16,13 @@
             <span class="card-title">@Model.Name</span>
             <p class="truncate">@Model.ShortDescription</p>
         </div>
-        <div class="card-action" style="display: flex; align-items: center; justify-content: space-between">
+        <div class="card-action beautify" >
             <a href="#">Подробнее</a>
-            <a href="#" class="btn blue lighten-1 right">@Model.Price.ToString("c")</a>
+            <a class="btn blue lighten-1 right"
+               asp-controller="ShoppingCart"
+               asp-action="AddToShoppingCart"
+               asp-route-gameId="@Model.GameId"
+               >@Model.Price.ToString("c")</a>
         </div>
     </div>
 </div>

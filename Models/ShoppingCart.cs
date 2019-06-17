@@ -83,6 +83,16 @@ namespace TabletopStore.Models
             return localAmount;
         }
 
+        //Remove all instances of specific game
+        public void RemoveAllFromCart(int gameId)
+        {
+            var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(s => s.Game.GameId == gameId && s.ShoppingCartId == ShoppingCartId);
+
+            _context.ShoppingCartItems.Remove(shoppingCartItem);
+
+            _context.SaveChanges();
+        }
+
         //Using EF extension methods to retrieve all items from cart into List
         public List<ShoppingCartItem> GetShoppingCartItems()
         {

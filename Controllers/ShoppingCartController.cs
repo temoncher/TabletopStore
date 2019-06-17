@@ -13,9 +13,10 @@ namespace TabletopStore.Controllers
     {
         private readonly IGameRepository _gameRepository;
         private readonly ShoppingCart _shoppingCart;
-        public ShoppingCartController()
+        public ShoppingCartController(IGameRepository gameRepository, ShoppingCart shoppingCart)
         {
-
+            _gameRepository = gameRepository;
+            _shoppingCart = shoppingCart;
         }
         public ViewResult Index()
         {
@@ -58,6 +59,16 @@ namespace TabletopStore.Controllers
             {
                 _shoppingCart.RemoveFromCart(selectedGame);
             }
+            return RedirectToAction("Index");
+        }
+        public RedirectToActionResult ClearCart(int gameId)
+        {
+            _shoppingCart.ClearCart();
+            return RedirectToAction("Index");
+        }
+        public RedirectToActionResult RemoveAllFromShoppingCart(int gameId)
+        {
+            _shoppingCart.RemoveAllFromCart(gameId);
             return RedirectToAction("Index");
         }
     }

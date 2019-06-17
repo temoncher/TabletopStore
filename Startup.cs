@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TabletopStore.Data.Repositories;
+using TabletopStore.Data.Services;
 using TabletopStore.Mocks;
 using TabletopStore.Models;
 using TabletopStore.Services;
@@ -46,6 +47,7 @@ namespace TabletopStore
             
             services.AddTransient<IGameRepository, GameRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShoppingCart.GetCart(sp));
