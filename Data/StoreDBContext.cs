@@ -8,13 +8,11 @@ namespace TabletopStore.Models
 {
     public class StoreDBContext : DbContext
     {
-        public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options)
-        {
-
-        }
-
+        public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options) { }
         public DbSet<Game> Games { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        //db of all shopping cart items
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

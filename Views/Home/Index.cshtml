@@ -5,7 +5,7 @@
     <h2>Hits of the week</h2>
     <h4>Best games are eager for you to play them!</h4>
 
-    <div>
+    <div class="row">
         @foreach(var game in Model.HitGames)
         {
             @await Html.PartialAsync("GameSummary", game)

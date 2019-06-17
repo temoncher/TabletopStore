@@ -7,28 +7,30 @@ using System.Threading.Tasks;
 
 namespace TabletopStore.Models
 {
+    /// <summary>
+    /// Categories are extracted into another property,
+    /// cause we need to set up connection between games and categories,
+    /// so we want to assign a particular cateogry for each item,
+    /// without using Categories.Last() or Categories.First(), like we did in Mock classes.
+    /// </summary>
     public class DbInitializer
     {
         public static void Seed(StoreDBContext context)
         {
             context.Database.EnsureCreated();
             //Seeding categories
-            /*
-             * Categories are extracted into another property, cause we need to set up connection between games and categories, so we want to
-             * assign a particular cateogry for each item, without using Categories.Last() or Categories.First(), like we did in Mock classes.
-             * 
-             */
             if (!context.Categories.Any())
             {
                 context.Categories.AddRange(Categories.Select(c => c.Value));
             }
 
-            //Seeding games
+            //Calling a method to seed games
             SeedGames(context);
         }
 
         private static void SeedGames(StoreDBContext context)
         {
+            //Searched the whole internet for tabletop games discriptions, but didn't find any :)
             if (!context.Games.Any())
             {
                 context.AddRange(

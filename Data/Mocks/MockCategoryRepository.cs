@@ -7,6 +7,9 @@ using TabletopStore.Services;
 
 namespace TabletopStore.Mocks
 {
+    /// <summary>
+    /// Was created for testing purposes only
+    /// </summary>
     public class MockCategoryRepository : ICategoryRepository
     {        public IEnumerable<Category> Categories
         {

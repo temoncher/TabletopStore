@@ -7,8 +7,12 @@ using TabletopStore.Services;
 
 namespace TabletopStore.Mocks
 {
+    /// <summary>
+    /// Was created for testing purposes only
+    /// </summary>
     public class MockGameRepository : IGameRepository
     {
+        //Games have Category property, so we need MockCategoryRepository to refer to
         private readonly ICategoryRepository _categoryRepository = new MockCategoryRepository();
         public IEnumerable<Game> Games
         {

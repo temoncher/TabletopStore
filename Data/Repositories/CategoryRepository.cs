@@ -9,6 +9,7 @@ namespace TabletopStore.Data.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
+        //Injecting DB context so we can interact with the database
         private readonly StoreDBContext _context;
 
         public CategoryRepository(StoreDBContext context)

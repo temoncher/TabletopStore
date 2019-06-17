@@ -10,6 +10,7 @@ namespace TabletopStore.Controllers
 {
     public class GameController : Controller
     {
+        //Using Dependecy Injection to get instances of repositories
         private readonly ICategoryRepository _categoryRepository;
         private readonly IGameRepository _gameRepository;
 
@@ -19,6 +20,7 @@ namespace TabletopStore.Controllers
             _gameRepository = gameRepo;
         }
 
+        //
         public ViewResult List()
         {
             GameListViewModel viewModel = new GameListViewModel();

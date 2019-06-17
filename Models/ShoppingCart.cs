@@ -10,6 +10,7 @@ namespace TabletopStore.Models
 {
     public class ShoppingCart
     {
+        //Using dependency injection with DB context
         private readonly StoreDBContext _context;
         private ShoppingCart(StoreDBContext context)
         {
@@ -18,8 +19,10 @@ namespace TabletopStore.Models
         public string ShoppingCartId { get; set; }
         public List<ShoppingCartItem> Items { get; set; }
 
+
         public static ShoppingCart GetCart(IServiceProvider services)
         {
+            //To proide some space for shopping cart data we use sessions
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
                 .HttpContext.Session;
 
@@ -31,6 +34,7 @@ namespace TabletopStore.Models
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
+        //Adding item to shopping cart
         public void AddToCart(Game game, int amount)
         {
             var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(s => s.Game.GameId == game.GameId && s.ShoppingCartId == ShoppingCartId);
@@ -54,6 +58,7 @@ namespace TabletopStore.Models
             _context.SaveChanges();
         }
 
+        //Removing item
         public int RemoveFromCart(Game game)
         {
             var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(s => s.Game.GameId == game.GameId && s.ShoppingCartId == ShoppingCartId);
@@ -78,6 +83,7 @@ namespace TabletopStore.Models
             return localAmount;
         }
 
+        //Using EF extension methods to retrieve all items from cart into List
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return Items ?? (Items = _context.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
@@ -86,6 +92,7 @@ namespace TabletopStore.Models
                 );
         }
 
+        //Clearing entire cart
         public void ClearCart()
         {
             var cartItems = _context
@@ -97,6 +104,7 @@ namespace TabletopStore.Models
             _context.SaveChanges();
         }
 
+        //Counting total cost of all the items in cart
         public double GetShoppingCartTotal()
         {
             var total = _context.ShoppingCartItems
