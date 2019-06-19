@@ -3,19 +3,19 @@
 <div class="row">
     @if (Model.ShoppingCartTotal == 0)
     {
-        <h2>Your shopping cart is empty</h2>
+        <h2>Shopping cart is empty now :(</h2>
     }
     else
     {
         <h2>Your shopping cart</h2>
     }
-    <table class="stripped">
+    <table class="highlight">
         <thead>
             <tr>
                 <th>Game</th>
                 <th>Selected amount</th>
                 <th>Price</th>
-                <th>Subtotal</th>
+                <th class="right">Subtotal</th>
                 <th></th>
             </tr>
         </thead>
@@ -23,8 +23,8 @@
             @foreach (var line in Model.ShoppingCart.Items)
             {
                 <tr>
-                    <td style="width: 55%">@line.Game.Name</td>
-                    <td>
+                    <td >@line.Game.Name</td>
+                    <td >
                         <div style="width: 15%; display:flex; justify-content: space-between">
                             <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-gameId="@line.Game.GameId">
                                 <i class="material-icons left">add</i>
@@ -37,11 +37,11 @@
                             </a>
                         </div>
                     </td>
-                    <td>@line.Game.Price.ToString("c")</td>
-                    <td>
+                    <td >@line.Game.Price.ToString("c")</td>
+                    <td class="right">
                         @((line.Amount * line.Game.Price).ToString("c"))
                     </td>
-                    <td>
+                    <td class="center-align">
                         <a asp-controller="ShoppingCart" asp-action="RemoveAllFromShoppingCart" asp-route-gameId="@line.Game.GameId">
                             <i class="material-icons">clear</i>
                         </a>
@@ -60,28 +60,28 @@
     </table>
 
     <div>
-        <a asp-controller="Games" asp-action="List" class="btn blue lighten-1 margin_1">
+        <a asp-controller="Games" asp-action="List" class="waves-effect waves-light btn blue lighten-1 margin_1">
             <span>Add more games</span>
             <i class="material-icons right">add_shopping_cart</i>
         </a>
         @if (Model.ShoppingCartTotal == 0)
         {
-            <a asp-controller="Order" asp-action="Checkout" class="btn blue lighten-1  right disabled margin_1">
+            <a asp-controller="Order" asp-action="Checkout" class="waves-effect waves-light btn blue lighten-1  right disabled margin_1">
                 <span>Check me out!</span>
                 <i class="material-icons right">shopping_cart</i>
             </a>
-            <a asp-controller="ShoppingCart" asp-action="ClearCart" class="btn blue lighten-1  disabled margin_1">
+            <a asp-controller="ShoppingCart" asp-action="ClearCart" class="waves-effect waves-light btn blue lighten-1  disabled margin_1">
                 <span>Clear cart</span>
                 <i class="material-icons right">remove_shopping_cart</i>
             </a>
         }
         else
         {
-            <a asp-controller="ShoppingCart" asp-action="ClearCart" class="btn blue lighten-1  margin_1">
+            <a asp-controller="ShoppingCart" asp-action="ClearCart" class="waves-effect waves-light btn blue lighten-1  margin_1">
                 <span>Clear cart</span>
                 <i class="material-icons right">remove_shopping_cart</i>
             </a>
-            <a asp-controller="Order" asp-action="Checkout" class="btn blue lighten-1 right margin_1">
+            <a asp-controller="Order" asp-action="Checkout" class="waves-effect waves-light btn blue lighten-1 right margin_1">
                 <span>Check me out!</span>
                 <i class="material-icons right">shopping_cart</i>
             </a>

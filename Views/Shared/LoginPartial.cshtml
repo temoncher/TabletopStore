@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="Logout" method="post" id="LogoutForm">
+        <li class="right"><a href="javascript:document.getElementById('LogoutForm').submit()" class="waves-effect waves-light btn blue lighten-1">Logout</a></li>
+    </form>
+}
+else
+{
+    <li class="right"><a asp-controller="Account" asp-action="Register" class="waves-effect waves-light btn green">Register</a></li>
+    <li class="right"><a asp-controller="Account" asp-action="Login" class="waves-effect waves-light btn blue lighten-1">Login</a></li>
+}

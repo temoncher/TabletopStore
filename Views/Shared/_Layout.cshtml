@@ -21,6 +21,11 @@
             align-items: center;
             justify-content: space-between
         }
+        .my_center
+        {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +46,7 @@
 
                 <li><a asp-controller="Contact" asp-action="Index">Contact us</a></li>
                 @await Component.InvokeAsync("ShoppingCartSummary")
+                @await Html.PartialAsync("LoginPartial")
             </ul>
             <ul class="sidenav" id="mobile-links">
                 <li class="bold"><a asp-controller="Home" asp-action="Index" class='waves-effect waves-teal'>Home</a></li>

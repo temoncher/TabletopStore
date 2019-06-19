@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.ViewModels;
 using TabletopStore.Models;
@@ -9,6 +10,7 @@ using TabletopStore.Services;
 
 namespace TabletopStore.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private readonly IGameRepository _gameRepository;

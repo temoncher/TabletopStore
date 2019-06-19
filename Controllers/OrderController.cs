@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.Services;
 using TabletopStore.Models;
@@ -19,8 +20,36 @@ namespace TabletopStore.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
+            return View();
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public IActionResult Checkout(Order order)
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.Items = items;
+
+            if(_shoppingCart.Items.Count == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty :( Go get some games first!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoutComplete");
+            }
+            return View(order);
+        }
+
+        public IActionResult CheckoutComplete()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thanks for your order! Your games will be at your place shortly! :)";
             return View();
         }
     }

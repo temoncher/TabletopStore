@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TabletopStore.Models
 {
-    public class StoreDBContext : DbContext
+    public class StoreDBContext : IdentityDbContext<IdentityUser>
     {
         public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options) { }
         public DbSet<Game> Games { get; set; }
