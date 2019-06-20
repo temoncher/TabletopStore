@@ -1,6 +1,6 @@
 using System;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Data.ViewModels
 {
     public class ErrorViewModel
     {

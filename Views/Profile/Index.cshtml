@@ -1,0 +1,32 @@
+﻿@model User
+
+<div class="row">
+
+    <h1 class="center-align">@Model.UserName</h1>
+
+    <div class="row">
+        <span>Your current e-mail: @Model.Email</span>
+    </div>
+
+    <div class="row">
+        <form asp-action="Delete" method="post">
+
+            <a class="waves-effect waves-light btn blue lighten-1 margin_1" asp-action="Edit">Edit profile</a>
+
+            <a class="waves-effect waves-light btn blue lighten-1 margin_1" asp-action="ChangePassword">Change password</a>
+
+            <a href="#delete" class="modal-trigger waves-effect waves-light btn red lighten-1 margin_1">Delete account</a>
+            <div class="modal" id="delete">
+                <div class="modal-content">
+                    <h6 class="center-align">Are you sure you want to delete this account?</h6>
+                </div>
+                <div class="modal-footer">
+                    <div class="row my_center">
+                        <button type="submit" class="waves-effect waves-light btn red lighten-1 margin_1">Confirm</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

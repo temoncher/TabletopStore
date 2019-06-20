@@ -1,0 +1,30 @@
+﻿@model EditUserViewModel
+
+<div class="row">
+
+    <h2 class="center-align">Edit profile</h2>
+
+    <form asp-action="Edit" asp-controller="Users">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row">
+            <div class="input-field col s4 offset-s4">
+                <label asp-for="UserName" class="control-label">User name</label>
+                <input type="text" asp-for="UserName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4 offset-s4">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input type="text" asp-for="Email" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4 offset-s4 my_center">
+                <button type="submit" class="waves-effect waves-light btn blue ligthen-1">Change</button>
+            </div>
+        </div>
+    </form>
+</div>

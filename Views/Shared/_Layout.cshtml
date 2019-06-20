@@ -26,6 +26,12 @@
             display: flex;
             justify-content: center;
         }
+        .modal
+        { 
+            width: 50% !important;
+            max-height: 25% !important;
+            overflow-y: hidden !important;
+        }
     </style>
 </head>
 <body>
@@ -85,12 +91,15 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--Scripts-->
+
+    <!--Sidenav-->
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav()
         })
     </script>
+
+    <!--Carousel-->
     <script>
         $(document).ready(function () {
             $('.carousel').carousel();
@@ -99,17 +108,28 @@
             fullWidth: true
         });
     </script>
+
+    <!--Collapsible-->
     <script>
         $(document).ready(function () {
             $('.collapsible').collapsible();
         });
     </script>
+
+    <!--Dropdown-->
     <script>
         $('.dropdown-trigger').dropdown(
             {
                 hover: true,
                 coverTrigger: false
             });
+    </script>
+
+    <!--Modal-->
+    <script>
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
     </script>
 </body>
 </html>
