@@ -240,15 +240,25 @@ namespace TabletopStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adress");
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("OrderPlaced");
 
