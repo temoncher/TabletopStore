@@ -5,6 +5,11 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <li class="right">
+        <a asp-controller="Users" asp-action="Profile">
+            <i class="material-icons">account_circle</i>
+        </a>
+    </li>
     <form asp-controller="Account" asp-action="Logout" method="post" id="LogoutForm">
         <li class="right"><a href="javascript:document.getElementById('LogoutForm').submit()" class="waves-effect waves-light btn blue lighten-1">Logout</a></li>
     </form>

@@ -33,7 +33,9 @@ namespace TabletopStore.Controllers
         public async Task<IActionResult> Login(LogInViewModel logInViewModel)
         {
             if (!ModelState.IsValid)
+            {
                 return View(logInViewModel);
+            }
 
             var user = await _userManager.FindByNameAsync(logInViewModel.UserName);
 
@@ -58,19 +60,21 @@ namespace TabletopStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(LogInViewModel logInViewModel)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new User() { UserName = logInViewModel.UserName };
-                var result = await _userManager.CreateAsync(user, logInViewModel.Password);
+                //Creating new User instance with according Username, and adding registration date
+                var user = new User() { UserName = registerViewModel.UserName, Email = registerViewModel.Email, RegisterDate = DateTime.Now };
+                //Calling user manager to apply password
+                var result = await _userManager.CreateAsync(user, registerViewModel.Password);
 
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return View(logInViewModel);
+            return View(registerViewModel);
         }
 
         [HttpPost]

@@ -8,7 +8,12 @@ namespace TabletopStore.Models
 {
     public class User : IdentityUser
     {
-        public List<Order> Orders { get; set; }
+        private List<Order> Orders { get; set; }
         public DateTime RegisterDate { get; set; }
+
+        public void AddOrder(Order order)
+        {
+            Orders.Add(order);
+        }
     }
 }

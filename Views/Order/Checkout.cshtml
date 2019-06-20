@@ -3,18 +3,18 @@
 <div class="row">
     <h3 class="text-center">You are just one step away from ordering your games!</h3>
 
-    <form asp-action="Checkout" method="post" role="form">
+    <form asp-action="Checkout" method="post" role="form" id="CheckoutForm">
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
                 <input asp-for="FirstName" id="FirstName_prefix" type="text" class="validate">
                 <label for="FirstName_prefix">First Name</label>
-                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
+                <span asp-validation-for="FirstName" class="helper-text" data-success="Ok"></span>
             </div>
             <div class="input-field col s6">
-                <input asp-for="LastName" id="LastName_prefix" class="form-control" />
+                <input asp-for="LastName" id="LastName_prefix" class="validate" />
                 <label for="LastName_prefix">Last Name</label>
-                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
+                <span asp-validation-for="LastName" class="helper-text" data-success="Nice!"></span>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                 <i class="material-icons prefix">location_on</i>
                 <input asp-for="Country" id="country" class="validate">
                 <label for="country">Country</label>
-                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
+                <span asp-validation-for="Country" class="helper-text" data-success="Great!"></span>
             </div>
         </div>
 
@@ -32,15 +32,14 @@
                 <i class="material-icons prefix">mail</i>
                 <input asp-for="Email" id="email" type="email" class="validate">
                 <label for="email">Email</label>
-                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
+                <span asp-validation-for="Email" class="helper-text" data-error="It's not an email adress :(" data-success="Brilliant!"></span>
             </div>
         </div>
 
 
         <div>
-            <input asp-controller="ShoppingCart" asp-action="Index" class="waves-effect waves-light btn red lighten-1 margin_1" type="submit" value="Wait!" />
-            <input class="waves-effect waves-light btn blue lighten-1 margin_1 right" type="submit" value="Complete order" />
+            <a asp-controller="ShoppingCart" asp-action="Index" class="waves-effect waves-light btn red lighten-1 margin_1">Wait!</a>
+            <a class="waves-effect waves-light btn blue lighten-1 margin_1 right" href="javascript:document.getElementById('CheckoutForm').submit()">Complete order</a>
         </div>
-
     </form>
 </div>

@@ -36,7 +36,7 @@ namespace TabletopStore.Controllers
             {
                 if (games.Count() == 0)
                 {
-                    RedirectToAction("NotFound");
+                    category = "No games in category, or category not found";
                 }
                 else
                 {
@@ -49,11 +49,6 @@ namespace TabletopStore.Controllers
             viewModel.CurrentCategory = category;
 
             return View(viewModel);
-        }
-
-        public ViewResult NotFound(string category)
-        {
-            return View(category);
         }
     }
 }

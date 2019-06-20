@@ -1,0 +1,14 @@
+﻿@model  User
+
+<h1>@Model.UserName</h1>
+
+<div class="row">
+    <span>Your current e-mail: @Model.Email</span>
+</div>
+<div class="row">
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <a class="waves-effect waves-light btn blue lighten-1" asp-action="Edit">Edit profile</a>
+        <a class="waves-effect waves-light btn blue lighten-1" asp-action="ChangePassword">Change password</a>
+        <button type="submit" class="waves-effect waves-light btn red lighten-1 btn-danger">Delete</button>
+    </form>
+</div>

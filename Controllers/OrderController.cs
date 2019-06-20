@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.Services;
+using TabletopStore.Data.ViewModels;
 using TabletopStore.Models;
 
 namespace TabletopStore.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderRepository _orderRepository;
@@ -20,14 +22,20 @@ namespace TabletopStore.Controllers
             _shoppingCart = shoppingCart;
         }
 
-        [Authorize]
+        public ViewResult List(IEnumerable<Order> orders)
+        {
+            OrderListViewModel viewModel = new OrderListViewModel();
+            viewModel.Orders = orders;
+
+            return View(viewModel);
+        }
+
         public IActionResult Checkout()
         {
             return View();
         }
         
         [HttpPost]
-        [Authorize]
         public IActionResult Checkout(Order order)
         {
             var items = _shoppingCart.GetShoppingCartItems();
@@ -41,6 +49,7 @@ namespace TabletopStore.Controllers
             if (ModelState.IsValid)
             {
                 _orderRepository.CreateOrder(order);
+                order.Customer.AddOrder(order);
                 _shoppingCart.ClearCart();
                 return RedirectToAction("CheckoutComplete");
             }

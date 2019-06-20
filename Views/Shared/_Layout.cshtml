@@ -51,9 +51,9 @@
             <ul class="sidenav" id="mobile-links">
                 <li class="bold"><a asp-controller="Home" asp-action="Index" class='waves-effect waves-teal'>Home</a></li>
                 <!-- Dropdown Trigger -->
-                <li class="bold" >
+                <li class="bold">
                     <ul class="collapsible collapsible-accordion">
-                        <li >
+                        <li>
                             <a class='collapsible-header waves-effect waves-teal' href="#" tabindex="0" style="padding: 0px 32px">Games</a>
 
                             <div class="collapsible-body" style="display: block; padding: 0px 16px">
@@ -63,6 +63,8 @@
                     </ul>
                 </li>
                 <li class="bold"><a asp-controller="Contact" asp-action="Index" class='waves-effect waves-teal'>Contact us</a></li>
+                @await Component.InvokeAsync("ShoppingCartSummary")
+                @await Html.PartialAsync("LoginPartial")
             </ul>
         </div>
     </nav>
