@@ -6,34 +6,33 @@
     <form asp-action="Checkout" method="post" role="form">
         <div class="row">
             <div class="input-field col s6">
-                <span asp-validation-for="FirstName" class="text-danger"></span>
                 <i class="material-icons prefix">account_circle</i>
                 <input asp-for="FirstName" id="FirstName_prefix" type="text" class="validate">
                 <label for="FirstName_prefix">First Name</label>
+                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
             </div>
             <div class="input-field col s6">
-                <span asp-validation-for="LastName" class="text-danger"></span>
                 <input asp-for="LastName" id="LastName_prefix" class="form-control" />
                 <label for="LastName_prefix">Last Name</label>
+                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <span asp-validation-for="Country" class="text-danger"></span>
                 <i class="material-icons prefix">location_on</i>
                 <input asp-for="Country" id="country" class="validate">
                 <label for="country">Country</label>
+                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <span asp-validation-for="Email" class="text-danger"></span>
                 <i class="material-icons prefix">mail</i>
                 <input asp-for="Email" id="email" type="email" class="validate">
                 <label for="email">Email</label>
-                <span class="helper-text" data-error="It's not email adress(" data-success="Brilliant!">This text helps you fill the form</span>
+                <span asp-validation-for="Email" class="helper-text" data-error="It's not email adress(" data-success="Brilliant!"></span>
             </div>
         </div>
 

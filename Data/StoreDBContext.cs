@@ -5,10 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TabletopStore.Models;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Data
 {
-    public class StoreDBContext : IdentityDbContext<IdentityUser>
+    public class StoreDBContext : IdentityDbContext<User>
     {
         public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options) { }
         public DbSet<Game> Games { get; set; }

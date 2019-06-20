@@ -13,9 +13,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TabletopStore.Data.Repositories;
 using TabletopStore.Data.Services;
-using TabletopStore.Mocks;
+using TabletopStore.Data.Mocks;
 using TabletopStore.Models;
 using TabletopStore.Services;
+using TabletopStore.Data;
 
 namespace TabletopStore
 {
@@ -46,7 +47,7 @@ namespace TabletopStore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<StoreDBContext>();
             
             services.AddTransient<IGameRepository, GameRepository>();

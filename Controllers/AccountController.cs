@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.ViewModels;
+using TabletopStore.Models;
 
 namespace TabletopStore.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -61,7 +62,7 @@ namespace TabletopStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = logInViewModel.UserName };
+                var user = new User() { UserName = logInViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, logInViewModel.Password);
 
                 if (result.Succeeded)

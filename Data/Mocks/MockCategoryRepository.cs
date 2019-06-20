@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TabletopStore.Models;
 using TabletopStore.Services;
 
-namespace TabletopStore.Mocks
+namespace TabletopStore.Data.Mocks
 {
     /// <summary>
     /// Was created for testing purposes only
