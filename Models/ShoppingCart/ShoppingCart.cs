@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using TabletopStore.Data;
+using TabletopStore.Models.Games;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Models.ShoppingCart
 {
     public class ShoppingCart
     {

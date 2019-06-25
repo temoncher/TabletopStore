@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TabletopStore.Models;
+using TabletopStore.Models.Games;
+using TabletopStore.Models.Orders;
+using TabletopStore.Models.Roles;
+using TabletopStore.Models.ShoppingCart;
 
 namespace TabletopStore.Data
 {

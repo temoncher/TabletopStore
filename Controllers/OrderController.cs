@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.Services;
 using TabletopStore.Data.ViewModels;
-using TabletopStore.Models;
+using TabletopStore.Models.Orders;
+using TabletopStore.Models.ShoppingCart;
 
 namespace TabletopStore.Controllers
 {
@@ -24,8 +22,10 @@ namespace TabletopStore.Controllers
 
         public ViewResult List(IEnumerable<Order> orders)
         {
-            OrderListViewModel viewModel = new OrderListViewModel();
-            viewModel.Orders = orders;
+            OrderListViewModel viewModel = new OrderListViewModel
+            {
+                Orders = orders
+            };
 
             return View(viewModel);
         }

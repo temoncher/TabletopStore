@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TabletopStore.Models;
+﻿using System.Collections.Generic;
+using TabletopStore.Models.Roles;
 
 namespace TabletopStore.Data.ViewModels
 {

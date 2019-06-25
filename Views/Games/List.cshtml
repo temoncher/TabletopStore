@@ -1,4 +1,6 @@
-﻿<h2 class="center-align">@Model.CurrentCategory</h2>
+﻿@using TabletopStore.Models.Games
+
+<h2 class="center-align">@Model.CurrentCategory</h2>
 <div class="row">
     @foreach (Game game in Model.Games)
     {

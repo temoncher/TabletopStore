@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TabletopStore.Data.ViewModels;
-using TabletopStore.Models;
+using TabletopStore.Models.ShoppingCart;
 
-namespace OnlineStore.Components
+namespace TabletopStore.Components
 {
     public class ShoppingCartSummary : ViewComponent
     {

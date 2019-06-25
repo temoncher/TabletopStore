@@ -1,5 +1,6 @@
-﻿
-namespace TabletopStore.Models
+﻿using TabletopStore.Models.Games;
+
+namespace TabletopStore.Models.Orders
 {
     public class OrderDetail
     {

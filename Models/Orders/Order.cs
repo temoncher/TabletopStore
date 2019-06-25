@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using TabletopStore.Models.Roles;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Models.Orders
 {
     public class Order
     {

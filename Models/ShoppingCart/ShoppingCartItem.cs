@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TabletopStore.Models.Games;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Models.ShoppingCart
 {
     public class ShoppingCartItem
     {

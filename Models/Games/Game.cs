@@ -1,5 +1,4 @@
-﻿
-namespace TabletopStore.Models
+﻿namespace TabletopStore.Models.Games
 {
     public class Game
     {

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.ViewModels;
-using TabletopStore.Models;
+using TabletopStore.Models.Roles;
 
 namespace TabletopStore.Controllers
 {

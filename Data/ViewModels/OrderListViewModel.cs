@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using TabletopStore.Models;
+﻿using System.Collections.Generic;
+using TabletopStore.Models.Orders;
 
 namespace TabletopStore.Data.ViewModels
 {

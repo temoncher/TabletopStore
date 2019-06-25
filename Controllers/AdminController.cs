@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TabletopStore.Data.ViewModels;
-using TabletopStore.Models;
+using TabletopStore.Models.Roles;
 
 namespace TabletopStore.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

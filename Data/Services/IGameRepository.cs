@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TabletopStore.Models;
+﻿using System.Collections.Generic;
+using TabletopStore.Models.Games;
 
-namespace TabletopStore.Services
+namespace TabletopStore.Data.Services
 {
     /// <summary>
     /// We need this interface to set up custom service, that will help us with mock database before we get to EntityFramework.

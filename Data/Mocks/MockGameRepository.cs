@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using TabletopStore.Models;
-using TabletopStore.Services;
+using TabletopStore.Data.Services;
+using TabletopStore.Models.Games;
 
 namespace TabletopStore.Data.Mocks
 {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TabletopStore.Data.Services;
 using TabletopStore.Data.ViewModels;
-using TabletopStore.Models;
-using TabletopStore.Services;
+using TabletopStore.Models.ShoppingCart;
 
 namespace TabletopStore.Controllers
 {

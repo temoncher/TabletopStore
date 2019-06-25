@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TabletopStore.Models
+namespace TabletopStore.Models.Games
 {
     public class Category
     {

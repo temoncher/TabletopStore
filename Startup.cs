@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TabletopStore.Data.Repositories;
-using TabletopStore.Data.Services;
-using TabletopStore.Data.Mocks;
 using TabletopStore.Models;
-using TabletopStore.Services;
 using TabletopStore.Data;
+using TabletopStore.Data.Services;
+using TabletopStore.Models.Roles;
+using TabletopStore.Models.ShoppingCart;
 
 namespace TabletopStore
 {

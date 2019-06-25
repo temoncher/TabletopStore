@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TabletopStore.Data.Services;
-using TabletopStore.Models;
+using TabletopStore.Models.Orders;
+using TabletopStore.Models.ShoppingCart;
 
 namespace TabletopStore.Data.Repositories
 {
