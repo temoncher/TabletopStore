@@ -36,7 +36,7 @@ namespace TabletopStore.Controllers
             EditUserViewModel model = new EditUserViewModel { UserName = _user.UserName, Email = _user.Email };
             return View(model);
         }
-        public IActionResult Index()
+        public ViewResult Index()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
             var _user = _userManager.FindByIdAsync(userId).Result;

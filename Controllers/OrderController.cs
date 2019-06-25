@@ -30,11 +30,8 @@ namespace TabletopStore.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Checkout()
-        {
-            return View();
-        }
-        
+        public ViewResult Checkout() => View();
+
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
@@ -56,7 +53,7 @@ namespace TabletopStore.Controllers
             return View(order);
         }
 
-        public IActionResult CheckoutComplete()
+        public ViewResult CheckoutComplete()
         {
             ViewBag.CheckoutCompleteMessage = "Thanks for your order! Your games will be at your place shortly! :)";
             return View();

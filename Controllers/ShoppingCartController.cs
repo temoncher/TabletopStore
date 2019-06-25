@@ -22,7 +22,7 @@ namespace TabletopStore.Controllers
         }
         public ViewResult Index()
         {
-            if (!(_shoppingCart == null)) {
+            if (_shoppingCart != null) {
                 var items = _shoppingCart.GetShoppingCartItems();
                 _shoppingCart.Items = items;
 

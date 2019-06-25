@@ -11,7 +11,7 @@ namespace TabletopStore.Controllers
 {
     public class GamesController : Controller
     {
-        //Using Dependecy Injection to get instances of repositories
+        //Using Dependency Injection to get instances of repositories
         private readonly ICategoryRepository _categoryRepository;
         private readonly IGameRepository _gameRepository;
 
@@ -34,7 +34,7 @@ namespace TabletopStore.Controllers
             }
             else
             {
-                if (games.Count() == 0)
+                if (!games.Any())
                 {
                     category = "No games in category, or category not found";
                 }
@@ -44,9 +44,11 @@ namespace TabletopStore.Controllers
                 }
             }
 
-            GameListViewModel viewModel = new GameListViewModel();
-            viewModel.Games = games;
-            viewModel.CurrentCategory = category;
+            GameListViewModel viewModel = new GameListViewModel
+            {
+                Games = games,
+                CurrentCategory = category
+            };
 
             return View(viewModel);
         }

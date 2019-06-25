@@ -21,13 +21,11 @@ namespace TabletopStore.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Login(string returnUrl)
-        {
-            return View(new LogInViewModel()
+        public ViewResult Login(string returnUrl) =>
+            View(new LogInViewModel()
             {
                 ReturnUrl = returnUrl
             });
-        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LogInViewModel logInViewModel)
@@ -53,10 +51,7 @@ namespace TabletopStore.Controllers
             return View(logInViewModel);
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
+        public ViewResult Register() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
