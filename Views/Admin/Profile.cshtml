@@ -1,0 +1,60 @@
+﻿@model AdminProfileViewModel
+
+@{
+    var adminString = "Promote to";
+    var salesString = "Promote to";
+    if (Model.IsAdmin)
+    {
+        adminString = "Demote from";
+    }
+    
+    if (Model.IsSalesperson)
+    {
+        salesString = "Demote from";
+    }
+}
+
+<div class="row">
+
+    <h1 class="center-align">@Model.User.UserName</h1>
+
+    <div class="row padding">
+        <span>Current e-mail: @Model.User.Email</span>
+    </div>
+
+    <div class="row">
+        <form asp-action="SwitchSalesperson" method="post">
+            <input type="hidden" asp-for="UserId" value="@Model.User.Id"/>
+
+            <a href="#salesPromote" class="modal-trigger waves-effect waves-light btn blue lighten-1 margin_1">@salesString salesperson role</a>
+            <div class="modal" id="salesPromote">
+                <div class="modal-content">
+                    <h6 class="center-align">Are you sure?</h6>
+                </div>
+                <div class="modal-footer">
+                    <div class="row my_center">
+                        <button type="submit" class="waves-effect waves-light btn blue lighten-1 margin_1">@salesString salesperson role</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <form asp-action="SwitchAdmin" method="post">
+            <input type="hidden" asp-for="UserId" value="@Model.User.Id"/>
+
+            <a href="#adminPromote" class="modal-trigger waves-effect waves-light btn red lighten-1 margin_1">@adminString admin role</a>
+            <div class="modal" id="adminPromote">
+                <div class="modal-content">
+                    <h6 class="center-align">Are you sure?</h6>
+                </div>
+                <div class="modal-footer">
+                    <div class="row my_center">
+                        <button type="submit" class="waves-effect waves-light btn red lighten-1 margin_1">@adminString admin role</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

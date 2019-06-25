@@ -5,6 +5,7 @@ namespace TabletopStore.Data.ViewModels
 {
     public class AdminUsersViewModel
     {
-        public IEnumerable<User> Users { get; set; }
+        public List<User> Users { get; set; }
+        public User SelectedUser { get; set; }
     }
 }

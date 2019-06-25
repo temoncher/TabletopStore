@@ -85,7 +85,11 @@ namespace TabletopStore
                 routes.MapRoute(
                     name: "categoryFilter",
                     template: "game/{action}/{category?}",
-                    defaults: new { Controller = "Game", Action = "List"});
+                    defaults: new { Controller = "Game", Action = "List" });
+                routes.MapRoute(
+                    name: "categoryFilter",
+                    template: "admin/profile/{id?}",
+                    defaults: new { Controller = "Admin", Action = "Profile" });
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
