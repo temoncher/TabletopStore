@@ -1,8 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.ViewModels;
+using TabletopStore.Models.Orders;
 using TabletopStore.Models.Roles;
 
 namespace TabletopStore.Controllers
@@ -13,7 +16,6 @@ namespace TabletopStore.Controllers
 
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        //private User _user;
 
         public ProfileController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
@@ -79,7 +81,7 @@ namespace TabletopStore.Controllers
 
             if (_user != null)
             {
-                IdentityResult result = await _userManager.DeleteAsync(_user);
+                await _userManager.DeleteAsync(_user);
                 await _signInManager.SignOutAsync();
             }
             return RedirectToAction("Index", "Home");
@@ -97,7 +99,7 @@ namespace TabletopStore.Controllers
             ChangePasswordViewModel model = new ChangePasswordViewModel { Email = _user.Email };
             return View(model);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
@@ -129,6 +131,39 @@ namespace TabletopStore.Controllers
                 }
             }
             return View(model);
+        }
+
+        public ViewResult Orders()
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+            User _user = _userManager.FindByIdAsync(userId).Result;
+            return View(_user.Orders);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult OrderDelivered(int id)
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+            User _user = _userManager.FindByIdAsync(userId).Result;
+            var order = _user.Orders.Where(o => o.Id == id).FirstOrDefault();
+            order.CurrentState = OrderState.Completed;
+            //_user.CompleteOrder(id);
+            return RedirectToAction("Orders");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult CancelOrder(int id)
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+            User _user = _userManager.FindByIdAsync(userId).Result;
+            var order = _user.Orders.Where(o => o.Id == id).FirstOrDefault();
+            order.CurrentState = OrderState.Canceled;
+            if (order != null)
+            {
+                _user.Orders.Remove(order);
+            }
+            //_user.RemoveOrder(id);
+            return RedirectToAction("Orders");
         }
     }
 }

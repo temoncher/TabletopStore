@@ -20,10 +20,19 @@
 
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">location_on</i>
+                <i class="material-icons prefix">language</i>
                 <input asp-for="Country" id="country" class="validate">
                 <label for="country">Country</label>
                 <span asp-validation-for="Country" class="helper-text" data-success="Great!"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">location_on</i>
+                <input asp-for="Adress" id="country" class="validate">
+                <label for="country">Adress</label>
+                <span asp-validation-for="Adress" class="helper-text" data-success="Great!"></span>
             </div>
         </div>
 
@@ -34,6 +43,10 @@
                 <label for="email">Email</label>
                 <span asp-validation-for="Email" class="helper-text" data-error="It's not an email adress :(" data-success="Brilliant!"></span>
             </div>
+        </div>
+
+        <div class="row">
+            <span class="left">@ViewBag.CheckoutError</span>
         </div>
 
 

@@ -9,11 +9,13 @@ namespace TabletopStore.Models.Orders
     public class Order
     {
         [BindNever]
-        public int OrderId { get; set; }
+        public int Id { get; set; }
+        public OrderState CurrentState { get; set; }
 
+        public string UserId { get; set; }
         public User Customer { get; set; }
 
-        public List<OrderDetail> OrderDetails { get; set; }
+        public List<OrderDetail> Details { get; set; }
 
         [Display(Name = "First Name")]
         [StringLength(50)]
@@ -43,10 +45,10 @@ namespace TabletopStore.Models.Orders
 
         [BindNever]
         [ScaffoldColumn(false)]
-        public double OrderTotal { get; set; }
+        public double Total { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]
-        public DateTime OrderPlaced { get; set; }
+        public DateTime Placed { get; set; }
     }
 }

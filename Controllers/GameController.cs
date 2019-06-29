@@ -1,55 +1,34 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
 using TabletopStore.Data.Services;
-using TabletopStore.Data.ViewModels;
 using TabletopStore.Models.Games;
 
 namespace TabletopStore.Controllers
 {
-    public class GamesController : Controller
+    public class GameController : Controller
     {
-        //Using Dependency Injection to get instances of repositories
-        private readonly ICategoryRepository _categoryRepository;
         private readonly IGameRepository _gameRepository;
-
-        public GamesController(ICategoryRepository categoryRepo, IGameRepository gameRepo)
+        public GameController(IGameRepository gameRepository)
         {
-            _categoryRepository = categoryRepo;
-            _gameRepository = gameRepo;
+            _gameRepository = gameRepository;
         }
-
-        //
-        public ViewResult List(string category)
+        public IActionResult Index(int id)
         {
-            var _category = category;
-            IEnumerable<Game> games = _gameRepository.Games.Where(g => string.Equals(g.Category.Name, category, StringComparison.OrdinalIgnoreCase)).OrderBy(g => g.GameId);
-
-            if (string.IsNullOrEmpty(category))
+            if (id == null)
             {
-                games = _gameRepository.Games.OrderBy(g => g.GameId);
-                category = "All games";
+                return RedirectToAction("Index", "Categories");
+            }
+
+            var selectedGame = _gameRepository.Games.FirstOrDefault(g => g.GameId == id);
+            if (selectedGame != null)
+            {
+                return View(selectedGame);
             }
             else
             {
-                if (!games.Any())
-                {
-                    category = "No games in category, or category not found";
-                }
-                else
-                {
-                    category = games.FirstOrDefault().Category.Name;
-                }
+                return RedirectToAction("Index", "Categories");
             }
-
-            GameListViewModel viewModel = new GameListViewModel
-            {
-                Games = games,
-                CurrentCategory = category
-            };
-
-            return View(viewModel);
         }
     }
 }

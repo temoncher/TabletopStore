@@ -18,7 +18,8 @@ namespace TabletopStore.Data.Repositories
 
         public void CreateOrder(Order order)
         {
-            order.OrderPlaced = DateTime.Now;
+            order.Placed = DateTime.Now;
+            order.CurrentState = OrderState.Created;
             _context.Orders.Add(order);
 
             var shoppingCartItems = _shoppingCart.Items;
@@ -29,7 +30,7 @@ namespace TabletopStore.Data.Repositories
                 {
                     Amount = item.Amount,
                     GameId = item.Game.GameId,
-                    OrderId = order.OrderId,
+                    OrderId = order.Id,
                     Price = item.Game.Price
                 };
                 _context.OrderDetails.Add(orderDetail);

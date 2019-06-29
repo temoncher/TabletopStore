@@ -41,9 +41,9 @@ namespace TabletopStore.Controllers
             }
         }
 
-        public RedirectToActionResult AddToShoppingCart(int gameId)
+        public RedirectToActionResult AddToShoppingCart(int id)
         {
-            var selectedGame = _gameRepository.Games.FirstOrDefault(p => p.GameId == gameId);
+            var selectedGame = _gameRepository.Games.FirstOrDefault(p => p.GameId == id);
             if (selectedGame != null)
             {
                 _shoppingCart.AddToCart(selectedGame, 1);
@@ -51,9 +51,9 @@ namespace TabletopStore.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int gameId)
+        public RedirectToActionResult RemoveFromShoppingCart(int id)
         {
-            var selectedGame = _gameRepository.Games.FirstOrDefault(p => p.GameId == gameId);
+            var selectedGame = _gameRepository.Games.FirstOrDefault(p => p.GameId == id);
             if (selectedGame != null)
             {
                 _shoppingCart.RemoveFromCart(selectedGame);
@@ -65,9 +65,9 @@ namespace TabletopStore.Controllers
             _shoppingCart.ClearCart();
             return RedirectToAction("Index");
         }
-        public RedirectToActionResult RemoveAllFromShoppingCart(int gameId)
+        public RedirectToActionResult RemoveAllFromShoppingCart(int id)
         {
-            _shoppingCart.RemoveAllFromCart(gameId);
+            _shoppingCart.RemoveAllFromCart(id);
             return RedirectToAction("Index");
         }
     }
