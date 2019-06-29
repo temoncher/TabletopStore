@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TabletopStore.Data.ViewModels;
 using TabletopStore.Models.Roles;
 
 namespace TabletopStore.Controllers
 {
-    //[Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -47,11 +45,12 @@ namespace TabletopStore.Controllers
             if (userRoles.Contains("admin"))
             {
                 viewModel.IsAdmin = true;
-            };
+            }
+
             if (userRoles.Contains("salesperson"))
             {
                 viewModel.IsSalesperson = true;
-            };
+            }
 
             return View(viewModel);
         }
@@ -71,7 +70,7 @@ namespace TabletopStore.Controllers
             }
             if (!isPresent)
             {
-                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole("salesperson"));
+                await _roleManager.CreateAsync(new IdentityRole("salesperson"));
             }
             if (viewModel.IsSalesperson)
             {
@@ -100,7 +99,7 @@ namespace TabletopStore.Controllers
             }
             if (!isPresent)
             {
-                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole("admin"));
+                await _roleManager.CreateAsync(new IdentityRole("admin"));
             }
             if (viewModel.IsAdmin)
             {
